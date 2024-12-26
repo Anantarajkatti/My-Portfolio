@@ -1,1 +1,4 @@
 Hello this is my portfolio project information
+
+created react app
+then  Tailwind Css install
