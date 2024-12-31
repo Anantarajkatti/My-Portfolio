@@ -1,3 +1,119 @@
+/* Font family added from Google font (Montserrat)*/
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Forum&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: "Forum", serif;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px #cff3d3; */
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:#d5efd8; 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a8d0ce;
+}
+
+i:hover{
+  color:rgb(75, 194, 227);
+} 
+
+i:active{
+  color: blue;
+}
+
+i:visited{
+  color: brown;
+}
+
+/* Loader Animation */
+.a{
+  animation: a 1s infinite;
+}
+
+@keyframes a{
+  0%{
+    opacity:1;
+    font-size: 50px;
+    color:red
+  }
+  50%{
+    opacity:0.5;
+  }
+  100%{
+    opacity:0.5;
+  }
+}
+
+.r{
+  animation: r 1s infinite;
+}
+
+@keyframes r{
+  0%{
+    opacity:0.5;
+    
+  }
+  50%{
+    opacity:1;
+    font-size: 50px;
+  }
+  100%{
+    opacity:0.5;
+  }
+}
+.k{
+  animation: k 1s infinite;
+}
+
+@keyframes k{
+  0%{
+    opacity:0.5;
+   
+  }
+  50%{
+    opacity:0.5;
+  }
+  100%{
+    opacity:1;
+    font-size: 50px;
+    color: green;
+  }
+}
+
+.contact-lottie{
+  animation:contact-lottie 1s infinite;
+}
+@keyframes contact-lottie{
+  0%{
+    height: 200px;
+    width: 200px;
+  }
+
+  50%{
+    height: 150px;
+    width:150px;
+  }
+
+  100%{
+    height: 100px;
+    width:100px;
+  }
+}
