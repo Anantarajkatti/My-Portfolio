@@ -1,15 +1,12 @@
 import React from "react";
 import SectionTitle from "../../Components/SectionTitle";
+import { useSelector } from "react-redux";
 
 function Contact() {
-  const user = {
-    name: "Anantaraj Katti",
-    age: "26",
-    gender: "male",
-    nationality: "Indian",
-    email: "anantarajkatti@gmail.com",
-    mobile: "9886764092",
-  };
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { contactRes } = portfolioData;
+  // const {age,email,gender,mobile,name,nationality}=courseRes
+   
   return (
     <div>
       <SectionTitle title="Say hello" />
@@ -17,15 +14,15 @@ function Contact() {
       <div className="flex tablet:flex-col w-full justify-center">
         <div className="flex flex-col text-2xl font-semibold text-secondary ml-10 w-3/4">
           <p>{"{"}</p>
-          {Object.keys(user).map((key) => (
+          {Object.keys(contactRes).map((key) => (
             <p className="ml-5">
               <span>{key} :</span>
-              <span> {user[key]}</span>
+              <span> {contactRes[key]}</span>
             </p>
           ))}
           <p>{"}"}</p>
         </div>
-        <div className="w-1/4">
+        <div className="w-1/4 tablet:hidden">
           <dotlottie-player 
             className="contact-lottie"
             src="https://lottie.host/1d77181b-d76e-431a-89c1-755cd8d4aa72/lAGyOEpAfC.lottie"

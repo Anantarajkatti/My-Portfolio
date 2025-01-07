@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import SectionTitle from "../../Components/SectionTitle";
-import { myQualification } from "../../resources/Qualification";
+// import { education } from "../../resources/Qualification";
+import { useSelector } from "react-redux";
 
-function Qualifications() {
+function Education() {
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
+  const { loading, portfolioData } = useSelector((state) => state.root);
+  const { educationRes } = portfolioData;
+ 
   return (
     <div>
       <SectionTitle title="Education" />
 
       <div className="flex py-10 gap-20 tablet:flex-col ">
         <div className="flex flex-col gap-10 border-l-2 ml-5 border-secondary w-1/3 tablet:flex-row tablet:overflow-x-scroll tablet:w-full">
-          {myQualification.map((qualifications, index) => (
+          {educationRes.map((edu, index) => (
             <div
               className=" cursor-pointer"
               onClick={() => {
@@ -24,16 +28,16 @@ function Qualifications() {
                     : "text-black"
                 }`}
               >
-                {qualifications.course}
+                {edu.course}
               </h1>
             </div>
           ))}
         </div>
 
         <div className="flex flex-col gap-5">
-          <h1 className="text-secondary text-2xl">{myQualification[selectedItemIndex].specification}</h1>
-          <h1 className="text-[#98547d] text-xl">{myQualification[selectedItemIndex].organization}</h1>
-          <h1 className="text-secondary text-4xl">{myQualification[selectedItemIndex].score}</h1>
+          <h1 className="text-secondary text-2xl">{educationRes[selectedItemIndex].specification}</h1>
+          <h1 className="text-[#98547d] text-xl">{educationRes[selectedItemIndex].organization}</h1>
+          <h1 className="text-secondary text-4xl">{educationRes[selectedItemIndex].score}</h1>
 
 
         </div>
@@ -42,4 +46,4 @@ function Qualifications() {
   );
 }
 
-export default Qualifications;
+export default Education;

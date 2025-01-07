@@ -3,12 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
     "@testing-library/react": "^16.1.0",
+    "antd": "^5.23.0",
+    "axios": "^1.7.9",
+    "client": "file:",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.1",
     "react-scripts": "5.0.1",
+    "redux": "^5.0.1",
     "web-vitals": "^4.2.4"
   },
   "scripts": {

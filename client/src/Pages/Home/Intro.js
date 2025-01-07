@@ -1,24 +1,26 @@
 import React from "react";
 import myPic from "./MyPic.jpeg";
+import { useSelector } from "react-redux";
 
 function Intro() {
+  const {loading, portfolioData}=useSelector((state)=>state.root)
+  const {introRes}= portfolioData;
+   const{firstName, lastName,welcomeText,description,caption}=introRes
+  
+
   return (
     <div className="intro-container flex items-center tablet:flex-col   gap-10 ">
       <div className=" intro-content flex flex-col items-start justify-center py-10 gap-8 tablet:order-2 ">
-        <h1 className="text-4xl font-semibold tablet:text-2xl ">Hi ,I am</h1>
+        <h1 className="text-4xl font-semibold tablet:text-2xl ">{welcomeText || ""}</h1>
         <h1 className="text-8xl tablet:text-6xl text-secondary font-semibold">
-          {" "}
-          ANANTARAJ KATTI
+          
+          {firstName || ""}{" "}{lastName || " "}
         </h1>
         <h1 className="text-5xl  tablet:text-3xl font-semibold  text-tertiary">
-          MERN Stack Developer
+         {caption || " "}
         </h1>
         <p className="w-2/3 text-2xl tablet:text-xl font-semibold w-full ">
-          A motivated full-stack developer skilled in front-end and back-end
-          development. Passionate about creating efficient, scalable, and
-          user-friendly applications, with a strong foundation in web
-          technologies and a commitment to continuous learning and
-          problem-solving.
+          {description ||" "}
         </p>
       </div>
       <div className="image flex w-full justify-center tablet:order-1 ">

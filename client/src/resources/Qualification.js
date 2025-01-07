@@ -1,4 +1,4 @@
-export const myQualification=[
+export const education=[
    
     {
       id: 1,

@@ -20,7 +20,7 @@ export const projectList= [
       link: "https://myecommercesite.com",
     //   image: "https://example.com/e-commerce.png"
     },
-    {
+    { 
       id: 4,
       projectName: "XOX Game",
       description: "A classic Tic-Tac-Toe game with a sleek interface, built using JavaScript for interactive gameplay.",
