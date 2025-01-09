@@ -117,3 +117,10 @@ i:visited{
     width:100px;
   }
 }
+
+input{
+  height:40px;
+  border:1px solid gray;
+  width:100%;
+  padding-left:20px;
+}

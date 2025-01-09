@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 
 const introSchema= new mongoose.Schema({
-    welcometext:{
+    welcomeText:{
         type:String,
         required:true
     },

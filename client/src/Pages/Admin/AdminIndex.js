@@ -1,39 +1,51 @@
-import React from 'react'
-import AdminIntro from './AdminIntro'
-import AdminAbout from './AdminAbout'
-import { Tabs } from 'antd';
+import React from "react";
+import AdminIntro from "./AdminIntro";
+import AdminAbout from "./AdminAbout";
+import { Tabs } from "antd";
+import Header from "../../Components/Header.js";
+import { useSelector } from "react-redux";
+
 // import  { TabsProps } from 'antd';
 
 function AdminIndex() {
-    const onChange = (key) => {
-        console.log(key);
-      };
+  const { portfolioData } = useSelector((state) => state.root);
 
-    const items= [
-        {
-          key: '1',
-          label: 'Intro',
-          children: <AdminIntro/>,
-        },
-        {
-          key: '2',
-          label: 'About Me',
-          children: <AdminAbout/>,
-        },
-        {
-          key: '3',
-          label: 'Tab 3',
-          children: 'Content of Tab Pane 3',
-        },
-      ];
+  const onChange = (key) => {
+    console.log(key);
+  };
+
+  const items = [
+    {
+      key: "1",
+      label: "Intro",
+      children: <AdminIntro />,
+    },
+    {
+      key: "2",
+      label: "About Me",
+      children: <AdminAbout />,
+    },
+    {
+      key: "3",
+      label: "Tab 3",
+      children: "Content of Tab Pane 3",
+    },
+  ];
   return (
-    <div className="mt-5 p-5 ">
-     <Tabs  defaultActiveKey="1" items={items} onChange={onChange} />
-   
-    
-
-    </div>
-  )
+    <>
+      <Header />
+      {portfolioData && (
+        <div className="mt-5 p-5 ">
+          <Tabs
+            className="text-xl "
+            defaultActiveKey="1"
+            items={items}
+            onChange={onChange}
+          />
+        </div>
+      )}
+    </>
+  );
 }
 
-export default AdminIndex
+export default AdminIndex;
