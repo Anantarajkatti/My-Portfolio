@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const{ IntroList ,AboutList,EducationList, ProjectsList,CoursesList, ContactList } =require('../models/portfolioModel');
+const User= require("../models/userModel")
 const mongoose = require("mongoose");
 
 router.get('/get-portfolio-data',
@@ -318,6 +319,34 @@ router.post("/update-contact",async(req,res)=>{
         console.log(error)
     }
 }) 
+
+router.post("/admin-login",async(req,res)=>{
+    try {
+
+        const user= await User.findOne({username:req.body.username,password:req.body.password})
+
+        user.password=" " // to make invisible in token
+        if(user){
+            res.status(200).send({
+                data:user,
+                success:true,
+                message:"Login Successful"
+            })
+        }
+        else{
+            res.status(200).send({
+                data:user,
+                success:false,
+                message:"Invalid Username or password"
+            })
+        }
+        
+    } catch (error) {
+        res.status(200).send(error)
+
+
+    }
+})
 
 
 

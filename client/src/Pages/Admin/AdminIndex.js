@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AdminIntro from "./AdminIntro";
 import AdminAbout from "./AdminAbout";
 import { Tabs } from "antd";
@@ -13,6 +13,12 @@ import AdminContact from "./AdminContact.js";
 
 function AdminIndex() {
   const { portfolioData } = useSelector((state) => state.root);
+
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+        window.location.href="/admin-login"
+    }
+   })
 
   const onChange = (key) => {
     console.log(key);
@@ -54,8 +60,18 @@ function AdminIndex() {
   return (
     <>
       <Header />
+      <div className="flex justify-between p-5 pb-0">
+        <div className="text-4xl text-secondary " > Portfolio Admin</div>
+        <button className="flex border border-black px-5 items-center bg-[#eb9d9d] rounded-full font-semibold"
+        onClick={()=>{
+          localStorage.removeItem("token")
+          window.location.href="/admin-login"
+        }}>
+        Log Out
+        </button>
+      </div>
       {portfolioData && (
-        <div className="mt-5 p-5 ">
+        <div className="mt-0 p-5 ">
           <Tabs
             className="text-xl "
             defaultActiveKey="1"

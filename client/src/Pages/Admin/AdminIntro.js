@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Form, Input, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { HideLoading, ShowLoading } from "../../redux/rootSlice";
@@ -7,6 +7,9 @@ import axios from "axios";
 function AdminIntro() {
   const dispatch = useDispatch();
   const { portfolioData } = useSelector((state) => state.root);
+
+   
+
 
   const onFinish = async (values) => {
     try {
@@ -48,7 +51,7 @@ function AdminIntro() {
       alert(error.message);
     }
   };
- 
+   
   return (
     <div className="text-2xl">
       <Form
