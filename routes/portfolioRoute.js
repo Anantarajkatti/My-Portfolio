@@ -79,6 +79,246 @@ router.post("/update-intro",async(req,res)=>{
     }
 })
 
+router.post("/update-about",async(req,res)=>{
+    try {
+        
+            console.log(AboutList)
+        console.log('requestBody:---',req.body) 
+        console.log('Request ID :---',req.body._id)
+
+        const document = await AboutList.findOne({ _id:req.body._id });
+         console.log("find Op:---", document)
+       
+ 
+        const aboutRes = await AboutList.findOneAndUpdate(
+            {_id : req.body._id },   
+          req.body, 
+            {new:true}
+        );
+
+       
+        console.log('updated response:----',aboutRes)
+        
+   
+        res.status(200).send(
+            {
+             data:aboutRes,
+             success:true,
+             message:"update Success"
+            }
+         )
+    }
+  
+        
+        
+     catch (error) {
+        res.status(500).send(error)
+        console.log(error)
+    }
+})
+
+
+router.post('/add-project',async(req,res)=>{
+    try {
+        console.log('req body:--',req.body)
+        const project= new ProjectsList(req.body)
+        project.save()
+        res.status(200).send(
+            {
+             data:project,
+             success:true,
+             message:"update Success"
+            }
+         )
+        
+    } catch (error) {
+        res.status(500).send(error)
+        console.log(error)
+    }
+})
+
+router.post("/update-project",async(req,res)=>{
+    try {
+        // const {_id, ...updateData}= req.body
+        // console.log(updateData)
+            console.log(ProjectsList)
+        console.log('requestBody:---',req.body) 
+        console.log(' this line executes')
+        console.log('Request ID :---',req.body._id)
+
+
+        const document = await ProjectsList.findOne({ _id:req.body._id });
+         console.log("find Op:---", document)
+       
+            
+ 
+        const projectRes = await ProjectsList.findOneAndUpdate(
+            {_id : req.body._id },   
+          req.body, 
+            {new:true}
+        );
+
+       
+        console.log('updated response:----',projectRes)
+        
+   
+        res.status(200).send(
+            {
+             data:projectRes,
+             success:true,
+             message:"update Success"
+            }
+         )
+    }
+  
+        
+        
+     catch (error) {
+        res.status(500).send(error)
+        console.log(error)
+    }
+})
+
+router.delete("/delete-project/:id",async(req,res)=>{
+    try {
+        const { id } = req.params; 
+        // Extract project ID from the URL
+    await ProjectsList.findByIdAndDelete(id); // Delete the project
+        res.status(200).send(
+            {
+             success:true,
+             message:"delete Success"
+            }
+         )
+    }
+        
+    catch (error) {
+        res.status(500).send(error)
+        console.log(error) 
+    }
+}
+)
+
+router.post('/add-course',async(req,res)=>{
+    try {
+        console.log('req body:--',req.body)
+        const course= new CoursesList(req.body)
+        course.save()
+        res.status(200).send(
+            {
+             data:course,
+             success:true,
+             message:"update Success"
+            }
+         )
+        
+    } catch (error) {
+        res.status(500).send(error)
+        console.log(error)
+    }
+})
+
+router.post("/update-course",async(req,res)=>{
+    try {
+        // const {_id, ...updateData}= req.body
+        // console.log(updateData)
+            console.log(CoursesList)
+        console.log('requestBody:---',req.body) 
+        console.log(' this line executes') 
+        console.log('Request ID :---',req.body._id)    
+
+
+        const document = await CoursesList.findOne({ _id:req.body._id });
+         console.log("find Op:---", document)
+       
+            
+ 
+        const courseRes = await CoursesList.findOneAndUpdate(
+            {_id : req.body._id },   
+          req.body, 
+            {new:true}
+        );
+
+       
+        console.log('updated response:----',courseRes)
+        
+   
+        res.status(200).send(
+            {
+             data:courseRes,
+             success:true,
+             message:"update Success"
+            }
+         )
+    }
+  
+        
+        
+     catch (error) {
+        res.status(500).send(error)
+        console.log(error)
+    }
+})
+
+router.delete("/delete-course/:id",async(req,res)=>{
+    try {
+        const { id } = req.params; 
+        // Extract project ID from the URL
+    await CoursesList.findByIdAndDelete(id); // Delete the project
+        res.status(200).send(
+            {
+             success:true,
+             message:"delete Success"
+            }
+         )
+    }
+    catch (error) {
+        res.status(500).send(error)
+        console.log(error) 
+    }
+}
+)
+
+router.post("/update-contact",async(req,res)=>{
+    try {
+        // const {_id, ...updateData}= req.body
+        // console.log(updateData)
+            console.log(ContactList)
+        console.log('requestBody:---',req.body) 
+        console.log('Request ID :---',req.body._id)
+
+        const document = await ContactList.findOne({ _id:req.body._id });
+         console.log("find Op:---", document)
+       
+          
+        
+       const contactRes = await ContactList.findOneAndUpdate(
+            {_id : req.body._id },   
+            req.body, 
+            {new:true}  
+        );
+
+       
+        console.log('updated response:----',contactRes)
+        
+   
+        res.status(200).send(
+            {
+             data:contactRes,
+             success:true,
+             message:"update Success"
+            }
+         )
+    }
+  
+        
+        
+     catch (error) {
+        res.status(500).send(error)
+        console.log(error)
+    }
+}) 
+
 
 
 

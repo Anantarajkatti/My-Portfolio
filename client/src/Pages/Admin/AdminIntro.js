@@ -39,13 +39,13 @@ function AdminIntro() {
         console.log("success")
         
         console.log(response.data)
-        message.success(response.data.message);
+        alert(response.data.message);
       } else {
         console.log("error")
-        message.error(response.data.message);
+       alert(response.data.message);
       }
     } catch (error) {
-      message.error(error.message);
+      alert(error.message);
     }
   };
  

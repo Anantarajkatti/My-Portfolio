@@ -4,6 +4,10 @@ import AdminAbout from "./AdminAbout";
 import { Tabs } from "antd";
 import Header from "../../Components/Header.js";
 import { useSelector } from "react-redux";
+import AdminEducation from "./AdminEducation.js";
+import AdminProjects from "./AdminProjects.js";
+import AdminCourses from "./AdminCourses.js";
+import AdminContact from "./AdminContact.js";
 
 // import  { TabsProps } from 'antd';
 
@@ -27,9 +31,25 @@ function AdminIndex() {
     },
     {
       key: "3",
-      label: "Tab 3",
-      children: "Content of Tab Pane 3",
+      label: "Education",
+      children: <AdminEducation/>,
     },
+    {
+      key: "4",
+      label: "Projects",
+      children: <AdminProjects/>,
+    },
+    {
+      key: "5",
+      label: "Courses",
+      children: <AdminCourses/>,
+    },
+    {
+      key:'6',
+      label:"Contact",
+      children:<AdminContact/>,
+    }
+  
   ];
   return (
     <>
