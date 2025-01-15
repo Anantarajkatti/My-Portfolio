@@ -24,7 +24,7 @@ function AdminIntro() {
 
 
       //update opearation
-      const response = await axios.post("http://localhost:5000/api/portfolio/update-intro", {
+      const response = await axios.post("https://my-portfolio-anantarajkati.onrender.com/api/portfolio/update-intro", {
         ...values,
         _id : portfolioData.introRes._id
       });

@@ -7,7 +7,7 @@ import { Button, Form, Modal } from "antd";
 import "antd/dist/reset.css";
 
 function AdminProjects() {
-    const [form] = Form.useForm(); 
+  const [form] = Form.useForm();
   const dispatch = useDispatch();
   const { portfolioData } = useSelector((state) => state.root);
   console.log("1-----obtained data", portfolioData);
@@ -18,8 +18,8 @@ function AdminProjects() {
   const onFinish = async (values) => {
     try {
       //Load before update
-      console.log("Update / ADD is clicked")
-      console.log("Form  ",Form)
+      console.log("Update / ADD is clicked");
+      console.log("Form  ", Form);
       dispatch(ShowLoading());
 
       console.log("2--- values sent:---", values);
@@ -30,13 +30,13 @@ function AdminProjects() {
         console.log("3----updation object", selectItemForEdit);
         console.log("sending update request");
         response = await axios.post(
-          "http://localhost:5000/api/portfolio/update-course",
+          "https://my-portfolio-anantarajkati.onrender.com/api/portfolio/update-course",
 
           { ...values, _id: selectItemForEdit._id }
         );
       } else {
         response = await axios.post(
-          "http://localhost:5000/api/portfolio/add-project",
+          "https://my-portfolio-anantarajkati.onrender.com/api/portfolio/add-project",
 
           values
         );
@@ -62,16 +62,12 @@ function AdminProjects() {
       }
 
       // to make state empty after update/add operation
-    //   console.log("making state Null")
-    //   setSelectItemForEdit(null);
+      //   console.log("making state Null")
+      //   setSelectItemForEdit(null);
 
-
-      if(selectItemForEdit)
-      {
-        console.log("state is not null ")
+      if (selectItemForEdit) {
+        console.log("state is not null ");
       }
-
-
     } catch (error) {
       console.log(error);
       alert(error.message);
@@ -79,16 +75,16 @@ function AdminProjects() {
 
     //to close modal on click of update
     setShowModal(false);
-   
   };
 
- 
-  const handleDelete=async(Project_id)=>{
-   try{
-    console.log(Project_id)
-    dispatch(ShowLoading());
+  const handleDelete = async (Project_id) => {
+    try {
+      console.log(Project_id);
+      dispatch(ShowLoading());
 
-    const response = await axios.delete(`http://localhost:5000/api/portfolio/delete-project/${Project_id}`);
+      const response = await axios.delete(
+        `https://my-portfolio-anantarajkati.onrender.com/api/portfolio/delete-project/${Project_id}`
+      );
 
       dispatch(HideLoading()); // Hide loader after the request
 
@@ -100,20 +96,14 @@ function AdminProjects() {
         console.error("Failed to delete project");
         alert(response.data.message);
       }
-   }
-    catch (error) {
+    } catch (error) {
       dispatch(HideLoading());
       console.error("Error deleting project:", error);
       alert("An error occurred while deleting the project.");
     }
-  
+  };
 
-  }
-
- 
-
-  console.log("displaying state",selectItemForEdit)
-
+  console.log("displaying state", selectItemForEdit);
 
   return (
     <div>
@@ -122,9 +112,9 @@ function AdminProjects() {
         <button
           className="border border-2 border-spacing-2 p-1 shadow bg-green-300 font-semibold"
           onClick={() => {
-            setShowModal(true)
-            setSelectItemForEdit(null)
-            form.resetFields(); ; 
+            setShowModal(true);
+            setSelectItemForEdit(null);
+            form.resetFields();
             console.log("add clicked");
           }}
         >
@@ -146,15 +136,17 @@ function AdminProjects() {
                 className="shadow bg-gray-300 p-1 rounded font-semibold w-20 border border-2 border-black text-xl"
                 onClick={() => {
                   setShowModal(true);
-                  setSelectItemForEdit(Project)
-                  form.setFieldsValue(Project)
-                  console.log("on click of edit state set",selectItemForEdit);
+                  setSelectItemForEdit(Project);
+                  form.setFieldsValue(Project);
+                  console.log("on click of edit state set", selectItemForEdit);
                 }}
               >
                 Edit
               </button>
-              <button className="shadow bg-red-400 p-1 rounded font-semibold w-20 border border-2 border-black"
-              onClick={()=>handleDelete(Project._id)}>
+              <button
+                className="shadow bg-red-400 p-1 rounded font-semibold w-20 border border-2 border-black"
+                onClick={() => handleDelete(Project._id)}
+              >
                 Delete
               </button>
             </div>
@@ -170,14 +162,8 @@ function AdminProjects() {
         }}
         title={selectItemForEdit ? "Edit Project" : " Add Project"}
         footer={null}
-        
       >
-        <Form
-        form={form}
-          layout="vertical"
-        
-          onFinish={onFinish}
-        >
+        <Form form={form} layout="vertical" onFinish={onFinish}>
           <Form.Item name="projectName" label="Project Name">
             <input type="text" placeholder="Project Name" />
           </Form.Item>
