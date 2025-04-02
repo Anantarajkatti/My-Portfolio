@@ -125,6 +125,9 @@ const contactSchema= new mongoose.Schema({
     }
 });
 
+//here an Object is being exported with key and value pairs
+/// /////// there portfolioRoute  the object is being destructured
+
 module.exports={
     IntroList : mongoose.model("intros",introSchema) ,
     AboutList : mongoose.model("abouts",aboutSchema),

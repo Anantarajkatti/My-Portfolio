@@ -118,7 +118,7 @@ function AdminProjects() {
             console.log("add clicked");
           }}
         >
-          Add Experience
+          Add Project
         </button>
       </div>
 

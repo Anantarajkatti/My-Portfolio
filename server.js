@@ -4,7 +4,8 @@ var cors = require('cors')
 const app = express();
 require("dotenv").config();
 app.use(cors())
-const dbconfig = require("./config/dbconfig");
+const dbconfig = require("./config/dbconfig");  // it will automatically executes its property of node JS
+
 const portfolioRoute= require('./routes/portfolioRoute')
 
 app.use(express.json())

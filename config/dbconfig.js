@@ -12,4 +12,4 @@ connection.on('connected',()=>{
     console.log('MONGO DB Connection Success')
 })
 
-module.exports=connection;
+module.exports=connection;  
